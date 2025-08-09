@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import TransactionForm from "@/components/user/TransactionForm"
 import { Pencil, Trash2 } from "lucide-react"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
-import { Input } from "@/components/ui/input" // For search box
+import { Input } from "@/components/ui/input"
 
 export default function TransactionsTable({ transactions = [], setTransactions, onEdit, onDelete }) {
   const [editOpen, setEditOpen] = useState(false)
@@ -74,7 +74,6 @@ export default function TransactionsTable({ transactions = [], setTransactions, 
 
   return (
     <>
-      {/* Filters, Sorting, Search */}
       <div className="flex flex-wrap gap-3 mb-4">
         <Select onValueChange={setTypeFilter} value={typeFilter}>
           <SelectTrigger className="w-[150px]">
@@ -113,7 +112,6 @@ export default function TransactionsTable({ transactions = [], setTransactions, 
           </SelectContent>
         </Select>
 
-        {/* Search box */}
         <Input
           placeholder="Search..."
           value={searchTerm}
@@ -122,7 +120,6 @@ export default function TransactionsTable({ transactions = [], setTransactions, 
         />
       </div>
 
-      {/* Table */}
       <div className="border rounded-lg overflow-x-auto">
         <Table>
           <TableHeader>
@@ -167,7 +164,6 @@ export default function TransactionsTable({ transactions = [], setTransactions, 
         </Table>
       </div>
 
-      {/* Edit dialog: controlled TransactionForm */}
       {selectedTransaction && (
         <TransactionForm
           mode="edit"

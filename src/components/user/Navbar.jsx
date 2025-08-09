@@ -38,7 +38,7 @@ export default function NavbarMenu() {
     <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-3xl px-4">
       <header>
         <nav className="flex h-14 items-center gap-4 px-4 border rounded-full bg-white shadow-md backdrop-blur-sm bg-opacity-80">
-          {/* Logo */}
+        
           <a href="#" className="inline-flex items-center gap-2">
             <img
               src="/images/logo.png"
@@ -50,12 +50,10 @@ export default function NavbarMenu() {
              </h3>
           </a>
 
-          {/* Desktop Nav */}
           <div className="hidden lg:flex gap-1 flex-1 justify-center">
             <NavLinks />
           </div>
-
-          {/* Desktop CTA Button */}
+        
           <div className="hidden lg:flex justify-end">
             <Button 
             asChild
@@ -63,8 +61,7 @@ export default function NavbarMenu() {
               <Link to="/signup">Sign Up</Link>
             </Button>
           </div>
-
-          {/* Mobile Nav */}
+        
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="ml-auto lg:hidden">
               <Button

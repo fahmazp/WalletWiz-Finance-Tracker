@@ -25,7 +25,6 @@ export default function SignupPage() {
         className="absolute bottom-0 right-0 w-48 h-48 lg:w-48 lg:h-48 opacity-60 transform translate-x-1/2 translate-y-1/2 rotate-[270deg] pointer-events-none z-10"
       />
 
-      {/* Left: Form Section */}
       <div className="flex p-6 md:px-10 relative z-10">
 
         <div className="flex flex-1 items-center justify-center">

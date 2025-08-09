@@ -9,7 +9,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative bg-black text-white overflow-hidden rounded-xl py-8 my-1">
-      {/* Background Gradient Waves */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
@@ -26,7 +25,7 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-16 flex flex-col lg:flex-row items-center gap-10">
-        {/* Left Content */}
+        {/* Left side */}
         <div className="flex-1 text-center lg:text-left">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
@@ -49,7 +48,6 @@ export default function HeroSection() {
             Connect accounts, track spending, and see where every penny goes in one smart dashboard.
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,7 +63,7 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Right Side - Phone Mockup */}
+        {/* Right Side */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}

@@ -4,7 +4,6 @@ export default function MonthlyAverages({ transactions = [] }) {
   const { avgIncome, avgExpense } = useMemo(() => {
     if (!transactions.length) return { avgIncome: 0, avgExpense: 0 }
 
-    // Track monthly totals for each type separately
     const monthlyIncomeTotals = {}
     const monthlyExpenseTotals = {}
 

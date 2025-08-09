@@ -1,4 +1,4 @@
-import { GithubIcon, InstagramIcon, LinkedinIcon, Youtube } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, Youtube } from 'lucide-react';
 
 const navigation = [
 

@@ -17,7 +17,7 @@ import useScrollToHash from "@/hooks/useScroll"
 export default function DashboardPage() {
 
   useScrollToHash();
-  
+
   const navigate = useNavigate()
 
   // current user
@@ -50,19 +50,17 @@ export default function DashboardPage() {
     navigate("/")
   }
 
-  // Add transaction (called by TransactionForm in add mode)
+  // Add 
   const addTransaction = (data) => {
     const newTransaction = {
       id: Date.now(),
       ...data,
-      // normalize date to yyyy-mm-dd (accept Date or string)
       date: data?.date
         ? data.date instanceof Date
           ? data.date.toISOString().split("T")[0]
           : String(data.date)
         : new Date().toISOString().split("T")[0],
       amount: Number(data.amount || 0),
-      // normalize notes field (some older code used description)
       notes: data.notes ?? data.description ?? "",
     }
 
@@ -72,7 +70,7 @@ export default function DashboardPage() {
     toast.success("Transaction added !")
   }
 
-  // Edit transaction (called from table)
+  // Edit
   const editTransaction = (id, updatedData) => {
     const updatedList = transactions.map((t) =>
       t.id === id
@@ -94,7 +92,7 @@ export default function DashboardPage() {
     toast.success("Transaction updated !")
   }
 
-  // Delete transaction
+  // Delete
   const deleteTransaction = (id) => {
     const updatedList = transactions.filter((t) => t.id !== id)
     setTransactions(updatedList)
@@ -166,7 +164,6 @@ export default function DashboardPage() {
       </div>
 
     </section>
-
 
       <section id="transactions" className="pt-6 space-y-2">
         <div className="flex justify-between items-center">
