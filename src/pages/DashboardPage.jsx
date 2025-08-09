@@ -11,9 +11,13 @@ import MonthlyAverages from "@/components/user/AverageStats"
 import TransactionsTable from "@/components/user/TransactionsTable"
 import MonthlyChart from "@/components/user/MonthlyTrendsChart"
 import ExpensesPieChart from "@/components/user/PieChart"
+import useScrollToHash from "@/hooks/useScroll"
 
 
 export default function DashboardPage() {
+
+  useScrollToHash();
+  
   const navigate = useNavigate()
 
   // current user
@@ -112,6 +116,9 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen p-6 pt-24">
+
+      <section id="overview">
+
       <div className="flex items-center justify-between flex-col md:flex-row mt-4 lg:mt-2 mb-6">
         <div className="flex items-center gap-2 md:gap-3">
           <h1 className="text-lg sm:text-2xl font-medium">Welcome, {currentUser?.email || currentUser?.name}</h1>
@@ -121,7 +128,6 @@ export default function DashboardPage() {
           Logout
         </Button>
       </div>
-
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <Card>
@@ -149,10 +155,9 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
         
-        <div className="">
+        <div>
           <MonthlyAverages transactions={transactions} />
         </div>
-        
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-2">
@@ -160,21 +165,23 @@ export default function DashboardPage() {
         <ExpensesPieChart transactions={transactions} />
       </div>
 
-      <div className="pt-6 space-y-2">
+    </section>
+
+
+      <section id="transactions" className="pt-6 space-y-2">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-semibold mb-2">Transaction History</h2>
           <TransactionForm onAddTransaction={addTransaction} />
         </div>
-
         <Separator className="bg-green-500 mb-4" />
-
         <TransactionsTable
           transactions={transactions}
           setTransactions={setTransactions}
           onEdit={editTransaction}
           onDelete={deleteTransaction}
         />
-      </div>
+      </section>
+
     </main>
   )
 }

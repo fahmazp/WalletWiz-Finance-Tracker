@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function NavbarMenu() {
+
+  const [open, setOpen] = useState(false);
+
   const navItems = [
     { title: "Home", path: "/" },
-    { title: "Transactions", path: "/" },
-    { title: "Dashboard", path: "dashboard" },
+    { title: "Transactions", path: "/dashboard#transactions" },
+    { title: "Dashboard", path: "/dashboard#overview" },
   ];
 
   const NavLinks = ({ mobile = false }) => (
@@ -23,6 +26,7 @@ export default function NavbarMenu() {
               ? "w-full justify-start text-base rounded-full text-gray-700 hover:bg-gray-100"
               : "font-semibold text-sm rounded-full px-4 hover:bg-[#66B12D] hover:text-primary-foreground"
           }
+          onClick={() => setOpen(false)}
         >
           <Link to={item.path}>{item.title}</Link>
         </Button>
@@ -53,13 +57,15 @@ export default function NavbarMenu() {
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex justify-end">
-            <Button className="rounded-full bg-black text-white px-5 hover:bg-gray-800">
-              Sign In
+            <Button 
+            asChild
+              className="rounded-full bg-black text-white px-5 hover:bg-gray-800">
+              <Link to="/signup">Sign Up</Link>
             </Button>
           </div>
 
           {/* Mobile Nav */}
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="ml-auto lg:hidden">
               <Button
                 variant="outline"
@@ -86,8 +92,12 @@ export default function NavbarMenu() {
 
               <div className="mt-6 flex flex-col gap-2">
                 <NavLinks mobile />
-                <Button className="rounded-full bg-black text-white mt-4 hover:bg-gray-800">
-                  Sign In
+                <Button
+                asChild
+                className="rounded-full bg-black text-white mt-4 hover:bg-gray-800"
+                onClick={() => setOpen(false)}
+                >
+                  <Link to="/signup">Sign Up</Link>
                 </Button>
               </div>
             </SheetContent>
