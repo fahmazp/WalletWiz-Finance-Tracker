@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { User } from "lucide-react"
+import { TrendingDown, TrendingUp, User, Wallet } from "lucide-react"
 import toast from "react-hot-toast"
 
 import TransactionForm from "@/components/user/TransactionForm"
-import TransactionsTable from "@/components/user/TransactionsTable"
 import MonthlyAverages from "@/components/user/AverageStats"
+import TransactionsTable from "@/components/user/TransactionsTable"
+import MonthlyChart from "@/components/user/MonthlyTrendsChart"
+import ExpensesPieChart from "@/components/user/PieChart"
+
 
 export default function DashboardPage() {
   const navigate = useNavigate()
@@ -123,33 +126,43 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <Card>
           <CardContent className="p-4">
-            <h2 className="text-sm text-muted-foreground mb-1">Total Balance</h2>
+            <h2 className="text-sm text-foreground mb-1 flex items-center gap-1">
+              <Wallet strokeWidth="2.5" className="w-5 text-foreground" />
+              Total Balance</h2>
             <p className="text-xl font-semibold">₹{totalBalance.toLocaleString()}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-4">
-            <h2 className="text-sm text-muted-foreground mb-1">Income</h2>
+            <h2 className="text-sm text-foreground mb-1 flex">Income
+              <TrendingUp strokeWidth="2.5" className="ml-1 w-5 text-green-600" />
+            </h2>
             <p className="text-xl font-semibold text-green-600">₹{totalIncome.toLocaleString()}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-4">
-            <h2 className="text-sm text-muted-foreground mb-1">Expenses</h2>
+            <h2 className="text-sm text-foreground mb-1 flex">Expenses
+              <TrendingDown strokeWidth="2.5" className="ml-1 w-5 text-red-500" />
+            </h2>
             <p className="text-xl font-semibold text-red-500">₹{totalExpense.toLocaleString()}</p>
           </CardContent>
         </Card>
         
-        <div>
+        <div className="">
           <MonthlyAverages transactions={transactions} />
         </div>
         
       </div>
 
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-2">
+        <MonthlyChart transactions={transactions} />
+        <ExpensesPieChart transactions={transactions} />
+      </div>
+
       <div className="pt-6 space-y-2">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-semibold mb-2">Transaction History</h2>
-          {/* TransactionForm shows its own Add button (triggerButton default true) */}
           <TransactionForm onAddTransaction={addTransaction} />
         </div>
 

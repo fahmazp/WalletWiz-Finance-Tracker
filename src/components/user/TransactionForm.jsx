@@ -44,7 +44,7 @@ export default function TransactionForm({
 
   // categories
   const incomeCategories = ["Salary", "Gifts", "Misc"]
-  const expenseCategories = ["Food", "Transport", "Bills", "Housing and Rent", "Entertainment", "Misc"]
+  const expenseCategories = ["Food", "Transport", "Bills", "Rent", "Entertainment", "Misc"]
 
   // watch type and date for UI
   const transactionType = watch("type")
@@ -85,11 +85,9 @@ export default function TransactionForm({
       : []
 
   const onSubmit = (data) => {
-    // normalize date and numbers minimally; parent will finalize exact storage format
     const payload = {
       ...data,
       amount: data.amount !== "" ? Number(data.amount) : 0,
-      // keep date as Date object if selected; parent will convert to string
       date: data.date ?? null,
       notes: data.notes ?? "",
     }

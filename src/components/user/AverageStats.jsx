@@ -36,12 +36,12 @@ export default function MonthlyAverages({ transactions = [] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2 mb-6">
       <div className="p-4 rounded-lg border bg-secondary ring ring-green-400 shadow-sm">
-        <h3 className="text-sm font-medium text-gray-500">Avg Income / Month</h3>
-        <p className="text-2xl font-semibold text-green-600">₹{avgIncome}</p>
+        <h3 className="text-sm font-medium">Avg Income / Month</h3>
+        <p className="text-base lg:text-xl font-semibold text-green-600">₹{avgIncome}</p>
       </div>
       <div className="p-4 rounded-lg border bg-secondary ring ring-red-400 shadow-sm">
-        <h3 className="text-sm font-medium text-gray-500">Avg Expense / Month</h3>
-        <p className="text-2xl font-semibold text-red-500">₹{avgExpense}</p>
+        <h3 className="text-sm font-medium">Avg Expense / Month</h3>
+        <p className="text-base lg:text-xl font-semibold text-red-500">₹{avgExpense}</p>
       </div>
     </div>
   )

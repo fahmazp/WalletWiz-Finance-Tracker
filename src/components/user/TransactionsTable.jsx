@@ -17,7 +17,7 @@ export default function TransactionsTable({ transactions = [], setTransactions, 
   const [searchTerm, setSearchTerm] = useState("")
 
   const categories = useMemo(() => {
-    const cats = new Set(transactions.map((t) => t.category))
+  const cats = new Set(transactions.map((t) => t.category || "Uncategorized"))
     return Array.from(cats)
   }, [transactions])
 
