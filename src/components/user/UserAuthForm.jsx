@@ -65,6 +65,7 @@ const LoginForm = ({ onLogin, isLoading }) => {
     toast.error("Login failed! Invalid credentials.")
     return;
   }
+  setErrors({});
 
     if (formData.rememberMe) {
       localStorage.setItem("rememberMe", "true");
