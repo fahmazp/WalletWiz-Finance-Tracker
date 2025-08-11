@@ -119,7 +119,7 @@ export default function DashboardPage() {
 
       <div className="flex items-center justify-between flex-col md:flex-row mt-4 lg:mt-2 mb-6">
         <div className="flex items-center gap-2 md:gap-3">
-          <h1 className="text-lg sm:text-2xl font-medium">Welcome, {currentUser?.email || currentUser?.name}</h1>
+          <h1 className="text-base sm:text-lg md:text-2xl font-medium">Welcome, {currentUser?.email || currentUser?.name}</h1>
           <User strokeWidth="2.5" className="w-6 h-6 text-green-600" />
         </div>
         <Button onClick={handleLogout} className="bg-red-500 hover:bg-red-600">
@@ -127,7 +127,7 @@ export default function DashboardPage() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <Card>
           <CardContent className="p-4">
             <h2 className="text-sm text-foreground mb-1 flex items-center gap-1">
