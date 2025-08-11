@@ -10,12 +10,6 @@ import { format } from "date-fns"
 import { useState, useEffect } from "react"
 import { Plus } from "lucide-react"
 
-// Props:
-// - onAddTransaction(data) : required (used for add or passed handler in edit to call parent)
-// - defaultValues : optional object when editing (fields: amount, type, category, date (string), notes/description)
-// - mode: 'add' | 'edit' (default 'add')
-// - triggerButton: boolean (default true) - if false, component won't render the Add button (useful for edit where parent controls opening)
-// - open (optional) and onOpenChange (optional) -> controlled dialog usage
 export default function TransactionForm({
   onAddTransaction,
   defaultValues = null,
@@ -34,7 +28,6 @@ export default function TransactionForm({
     }
   })
 
-  // internal open state only used if parent does not control dialog
   const [internalOpen, setInternalOpen] = useState(false)
   const open = controlledOpen === undefined ? internalOpen : controlledOpen
   const setOpen = (val) => {
@@ -46,15 +39,13 @@ export default function TransactionForm({
   const incomeCategories = ["Salary", "Gifts", "Misc"]
   const expenseCategories = ["Food", "Transport", "Bills", "Rent", "Entertainment", "Misc"]
 
-  // watch type and date for UI
   const transactionType = watch("type")
   const watchedDate = watch("date")
 
-  // When dialog opens or defaultValues change, fill form. Only run when `open` toggles or defaultValues change.
   useEffect(() => {
     if (open) {
       if (defaultValues) {
-        // map possible field names safely (notes or description)
+
         const notesVal = defaultValues.notes ?? defaultValues.description ?? ""
         reset({
           amount: defaultValues.amount ?? "",
@@ -74,7 +65,6 @@ export default function TransactionForm({
         })
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, defaultValues, reset])
 
   const filteredCategories =
@@ -96,7 +86,6 @@ export default function TransactionForm({
       onAddTransaction(payload)
     }
 
-    // close dialog & reset (if uncontrolled)
     setOpen(false)
     reset({
       amount: "",

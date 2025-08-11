@@ -38,9 +38,27 @@ export default function ExpensesPieChart({ transactions = [] }) {
     }))
   }, [transactions])
 
+if (!data.length) {
+    return (
+      <div className="p-4 border rounded-lg bg-secondary shadow-sm">
+        <h3 className="text-sm underline font-medium mb-4">
+          Expense Breakdown by Category
+        </h3>
+        <img 
+          src="/images/no-data.svg" 
+          alt="No expenses" 
+          className="mx-auto mb-2 w-32 h-32 opacity-80"
+        />
+        <p className="text-sm text-gray-600">
+          No expense transactions to display yet.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <div className="p-4 border rounded-lg bg-secondary shadow-sm">
-      <h3 className="text-sm font-medium mb-4">
+      <h3 className="text-sm underline font-medium mb-4">
         Expense Breakdown by Category
       </h3>
       <ResponsiveContainer width="100%" height={300}>

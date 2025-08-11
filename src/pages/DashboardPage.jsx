@@ -165,9 +165,9 @@ export default function DashboardPage() {
 
     </section>
 
-      <section id="transactions" className="pt-6 space-y-2">
+      <section id="transactions" className="pt-10 space-y-2">
         <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold mb-2">Transaction History</h2>
+          <h2 className="md:text-lg font-semibold mb-2">Transaction History</h2>
           <TransactionForm onAddTransaction={addTransaction} />
         </div>
         <Separator className="bg-green-500 mb-4" />

@@ -43,9 +43,28 @@ const chartData = useMemo(() => {
     return sorted
   }, [transactions])
 
+if (!chartData.length) {
   return (
     <div className="p-4 border rounded-lg bg-secondary shadow-sm">
-      <h3 className="text-sm  font-medium mb-4">
+      <h3 className="text-sm underline font-medium mb-4">
+        Monthly Income vs Expense
+      </h3>
+      <img 
+        src="/images/no-data.svg" 
+        alt="No transactions" 
+        className="mx-auto mb-2 w-32 h-32 opacity-90"
+      />
+      <p className="text-sm text-gray-600">
+        No transactions to display yet.
+      </p>
+    </div>
+  )
+}
+
+
+  return (
+    <div className="p-4 border rounded-lg bg-secondary shadow-sm">
+      <h3 className="text-sm underline font-medium mb-4">
         Monthly Income vs Expense
       </h3>
       <ResponsiveContainer width="100%" height={300}>
